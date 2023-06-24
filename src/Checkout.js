@@ -1,8 +1,13 @@
 import React from "react";
 import "./Checkout.css";
 import Subtotoal from "./Subtotoal.js";
+import { useStateValue } from "./StateProvider";
+import CheckoutProduct from "./CheckoutProduct";
+
 function Checkout() {
+  const [{basket},dispatch] = useStateValue();
   return (
+
     <div className="checkout">
       <div className="checkout_left">
         <img
@@ -12,7 +17,15 @@ function Checkout() {
         />
         <div>
           <h2 className="checkout_title">Shopping Basket</h2>
-
+          {basket.map(item =>(
+            <CheckoutProduct
+              id={item.id}
+              title={item.title}
+              image={item.image}
+              price={item.price}
+              rating={item.rating}
+            />
+          ))}
           {/* basketItem */}
           {/* basketItem */}
           {/* basketItem */}
